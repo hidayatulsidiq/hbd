@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Selamat Ulang Tahun Adek!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://images.unsplash.com/photo-1525072126625-4e042aa5d510?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 60px;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .message {
+      font-size: 1.2em;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 700px;
+      background: rgba(255, 192, 203, 0.6);
+      padding: 20px;
+      border-radius: 20px;
+      line-height: 1.7;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    }
+
+    .cake {
+      width: 200px;
+      margin: 20px auto;
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      animation: rise 10s infinite;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .audio-control {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.4);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.9em;
+    }
+
+    button {
+      background-color: #fff;
+      color: #ff69b4;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #ffe4ec;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌷 Selamat Ulang Tahun Adek 🌷</h1>
+  <div class="message">
+    adekkk selamat ulang tahun yang keee 17+++ yaa 🥳🥳🥳🥳🥳🥳 <br><br>
+    Semoga keinginan adek tercapaii, wisuda tahun ini dan dapat kerja yang adek mauu, kalau bisa di Bandung yaaa. <br><br>
+    Btw maafin abang yaa udah bikin adek gak mood muluuu, bikin adek nangis dll hehhehe, jangan suka nangis lagi yaa. <br><br>
+    Yukkk semangattt! Kurangi ya teh botolnyaa 😅, kalau matcha sih boleh... tapi nanti matcha harus dari abang 😛. <br><br>
+    Adek gak ada gitu mau ke Bandung? Abang ada sesuatu untuk adek, tapi adek harus ke Bandung dulu 😛. <br><br>
+    BTW, selamat ulang tahun yaa adek sayang 🥰🥳
+  </div>
+
+  
+
+  <!-- Musik latar romantis - Tenderness -->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mp3">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <div class="audio-control">
+    <button onclick="toggleMusic()">⏯️ Musik</button>
+  </div>
+
+  <script>
+    const music = document.getElementById('bg-music');
+
+    // Upaya autoplay otomatis setelah load
+    window.addEventListener('load', () => {
+      music.muted = false;
+      const playPromise = music.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.log("Autoplay diblokir, pengguna harus klik play.");
+        });
+      }
+    });
+
+    // Fungsi tombol play/pause
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+    // Animasi balon
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      const size = Math.random() * 30 + 20;
+      const colors = ['#ff6f91', '#ffc75f', '#ff9671', '#9c27b0', '#00c9a7'];
+      balloon.className = 'balloon';
+      balloon.style.width = size + 'px';
+      balloon.style.height = size * 1.4 + 'px';
+      balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+      balloon.style.borderRadius = '50%';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      document.body.appendChild(balloon);
+
+      setTimeout(() => balloon.remove(), 10000);
+    }
+
+    setInterval(createBalloon, 500);
+  </script>
+</body>
+</html>
